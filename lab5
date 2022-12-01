@@ -1,0 +1,29 @@
+Zad 1
+a)
+create table kreatura select * from wikingowie.kreatura
+create table zasob select * from wikingowie.zasob
+create table ekwipunek select * from wikingowie.ekwipunek
+
+b) select * from zasob
+c) select * from zasob where rodzaj = "jedzenie"
+d) select idzasobu, ilosc from zasob where idzasobu = 1,3,5
+
+Zad 2
+a) select * from kreatura where rodzaj != "wiedzma" and udzwig > 50
+b) select * from zasob where waga between 2 and 5
+c) select * from kreatura where nazwa like "%or%" and udzwig > 30 and udzwig < 70
+
+Zad 3
+a) select nazwa, datapozyskania from zasob where month(datapozyskania) = 7,8
+b) select * from zasob where rodzaj is not null order by waga
+c) select * from kreatura order by dataur desc limit 5
+
+Zad 4
+a) select distinct nazwa from zasob
+b) select concat(nazwa," ",rodzaj) from kreatura where rodzaj like "wi%"
+c) select nazwa, (waga*ilosc) as waga_calkowita, datapozyskania from zasob where year(datapozyskania) = 2000 and = 2007
+
+Zad 5
+a) select nazwa,waga*0.7 as waga_netto, waga*0.3 as odpadki from zasob
+b) select nazwa,rodzaj from zasob where rodzaj is null
+c) select distinct nazwa from zasob where nazwa like "Ba%" or nazwa like "%os" order by nazwa asc
