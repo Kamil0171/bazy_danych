@@ -14,7 +14,7 @@ b) select * from zasob where waga between 2 and 5
 c) select * from kreatura where nazwa like "%or%" and udzwig > 30 and udzwig < 70
 
 Zad 3
-a) select nazwa, datapozyskania from zasob where month(datapozyskania) = 7,8
+a) select nazwa, datapozyskania from zasob where month(datapozyskania) in (7,8)
 b) select * from zasob where rodzaj is not null order by waga
 c) select * from kreatura order by dataur desc limit 5
 
