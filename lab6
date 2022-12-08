@@ -1,1 +1,14 @@
+Zad 1
+a) select avg(waga) as srednia_waga from kreatura where rodzaj='wiking'
+b) select rodzaj,avg(waga) as srednia_waga ,count(*) as liczba_kreatur from kreatura group by rodzaj
+c) select rodzaj, avg(2022-year(dataUr)) as sredni_wiek from kreatura group by rodzaj
 
+Zad 2
+a) select rodzaj, sum(waga*ilosc) as suma_wag from zasob group by rodzaj
+b) select nazwa, avg(waga) from zasob where ilosc >=4 group by nazwa having avg(waga) >10
+c) select rodzaj, count(nazwa) from zasob group by rodzaj having sum(ilosc) > 1
+
+Zad 3
+a) select nazwa, ilosc from ekwipunek join kreatura on ekwipunek.idKreatury=kreatura.idKreatury
+b)  select k.nazwa, e.ilosc,z.nazwa from kreatura k inner join ekwipunek e inner join zasob z on z.idZasobu=e.idZasobu on  k.idKreatury=e.idKreatury
+c) select * from kreatura k left join ekwipunek e on k.idKreatury=e.idKreatury where e.idEkwipunku is null
