@@ -10,5 +10,9 @@ c) select rodzaj, count(nazwa) from zasob group by rodzaj having sum(ilosc) > 1
 
 Zad 3
 a) select nazwa, ilosc from ekwipunek join kreatura on ekwipunek.idKreatury=kreatura.idKreatury
-b)  select k.nazwa, e.ilosc,z.nazwa from kreatura k inner join ekwipunek e inner join zasob z on z.idZasobu=e.idZasobu on  k.idKreatury=e.idKreatury
+b) select k.nazwa, e.ilosc,z.nazwa from kreatura k inner join ekwipunek e inner join zasob z on z.idZasobu=e.idZasobu on  k.idKreatury=e.idKreatury
 c) select * from kreatura k left join ekwipunek e on k.idKreatury=e.idKreatury where e.idEkwipunku is null
+
+Zad 4
+a) select k.nazwa, z.nazwa, dataUr  FROM wikingowie.zasob z INNER JOIN wikingowie.kreatura k INNER JOIN wikingowie.ekwipunek ON wikingowie.ekwipunek.idKreatury=k.idKreatury ON wikingowie.ekwipunek.idZasobu=z.idZasobu WHERE dataUr LIKE '167%'
+b) select dataUr, k.nazwa, z.rodzaj FROM wikingowie.kreatura k JOIN wikingowie.ekwipunek e JOIN wikingowie.zasob z ON z.idZasobu=e.idZasobu ON k.idKreatury=e.idKreatury WHERE z.rodzaj='jedzenie' ORDER BY dataUr ASC LIMIT 5
