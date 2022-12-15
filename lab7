@@ -1,0 +1,9 @@
+Zad 1
+a) create table uczestnicy select * from wikingowie.uczestnicy
+create table etapy_wyprawy select * from wikingowie.etapy_wyprawy
+create table sektor select * from wikingowie.sektor
+create table wyprawa select * from wikingowie.wyprawa
+b) select nazwa from kreatura k left join uczestnicy u on u.id_Uczestnika=k.idKreatury where id_wyprawy is null
+c) select w.nazwa, sum(e.ilosc) from wyprawa w inner join uczestnicy u on w.id_wyprawy=u.id_wyprawy 
+inner join ekwipunek e on e.idKreatury=u.id_Uczestnika
+group by w.id_wyprawy
