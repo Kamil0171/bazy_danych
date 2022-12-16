@@ -16,3 +16,12 @@ c) select * from kreatura k left join ekwipunek e on k.idKreatury=e.idKreatury w
 Zad 4
 a) select k.nazwa, z.nazwa, dataUr  FROM wikingowie.zasob z INNER JOIN wikingowie.kreatura k INNER JOIN wikingowie.ekwipunek ON wikingowie.ekwipunek.idKreatury=k.idKreatury ON wikingowie.ekwipunek.idZasobu=z.idZasobu WHERE dataUr LIKE '167%'
 b) select dataUr, k.nazwa, z.rodzaj FROM wikingowie.kreatura k JOIN wikingowie.ekwipunek e JOIN wikingowie.zasob z ON z.idZasobu=e.idZasobu ON k.idKreatury=e.idKreatury WHERE z.rodzaj='jedzenie' ORDER BY dataUr ASC LIMIT 5
+c) select concat(k2.nazwa, ' - ', k1.nazwa) as tak from kreatura k1 join kreatura k2 on k1.idKreatury-5=k2.idKreatury
+
+Zad 5
+a) select k.rodzaj,
+sum(e.ilosc*z.waga)/count(distinct(k.nazwa)) from kreatura k 
+inner join ekwipunek e on k.idKreatury=e.idKreatury 
+inner join zasob z on e.idZasobu=z.idZasobu 
+where k.rodzaj not in ('malpa', 'waz') group by k.rodzaj
+b) select k.rodzaj, max(k.dataUr), min(k.dataUr) from kreatura k group by k.rodzaj
