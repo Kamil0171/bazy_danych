@@ -7,3 +7,24 @@ b) select nazwa from kreatura k left join uczestnicy u on u.id_Uczestnika=k.idKr
 c) select w.nazwa, sum(e.ilosc) from wyprawa w inner join uczestnicy u on w.id_wyprawy=u.id_wyprawy 
 inner join ekwipunek e on e.idKreatury=u.id_Uczestnika
 group by w.id_wyprawy
+Zad 2
+a) select w.nazwa, 
+concat(u.id_uczestnika),
+group_concat(k.nazwa separator ' | ')
+from wyprawa w
+join uczestnicy u on u.id_wyprawy=w.id_wyprawy
+join kreatura k on k.idKreatury=u.id_uczestnika
+group by w.id_wyprawy;
+b) select w.nazwa, w.data_rozpoczecia, k.nazwa as kierownik, ew.kolejnosc, s.nazwa
+from etapy_wyprawy ew
+join sektor s on ew.sektor=s.id_sektora
+join wyprawa w on w.id_wyprawy=ew.idWyprawy
+join kreatura k on k.idKreatury=w.kierownik
+order by w.data_rozpoczecia desc, ew.kolejnosc asc;
+Zad 3
+a) select s.nazwa, count(ew.sektor) as ile_odwiedzin from sektor s
+left join etapy_wyprawy ew on s.id_sektora=ew.sektor 
+group by s.id_sektora;
+b) select k.nazwa, if(count(id_uczestnika)>0, 'bral udzal', 'nie bral udzial') from kreatura k
+left join uczestnicy s on s.id_uczestnika=k.idKreatury
+group by k.idKreatury; 
