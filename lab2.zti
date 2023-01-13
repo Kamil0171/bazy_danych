@@ -1,0 +1,14 @@
+1) select imie,nazwisko, nazwa from pracownik p join dzial d on d.id_dzialu=p.dzial
+2) select nazwa_towaru, nazwa_kategori, ilosc from towar t join kategoria k on k.id_kategori=t.kategoria join stan_magazynowy s on t.id_towaru=s.towar order by ilosc desc
+3) select * from zamowienie z join status_zamowienia s on z.status_zamowienia=s.id_statusu_zamowienia where nazwa_statusu_zamowienia="anulowane"
+4) select * from klient inner join adres_klienta on klient.id_klienta = adres_klienta.klient where adres_klienta.miejscowosc = "Olsztyn" and adres_klienta.typ_adresu = 1;
+5) select distinct jm.id_jednostki, sm.jm from jednostka_miary jm  left join stan_magazynowy sm on jm.id_jednostki=sm.jm where towar is null;
+6) select z.numer_zamowienia, t.nazwa_towaru, pz.ilosc, pz.cena FROM zamowienie z JOIN pozycja_zamowienia pz ON pz.zamowienie=z.id_zamowienia JOIN towar t ON t.id_towaru=pz.towar WHERE year(z.data_zamowienia)=2018;
+7) create table towary_full_info (select t.nazwa_towaru, t.cena_zakupu, k.nazwa_kategori ,sm.ilosc, jm.nazwa from __firma_zti.towar t
+join __firma_zti.kategoria k ON k.id_kategori=t.kategoria 
+join __firma_zti.stan_magazynowy sm ON sm.towar=t.id_towaru
+join __firma_zti.jednostka_miary jm on sm.jm=jm.id_jednostki);
+8) select * from pozycja_zamowienia pz inner join (select * from zamowienie order by data_zamowienia asc limit 5) as z on z.id_zamowienia=pz.zamowienie;
+9) select z.* from zamowienie z join status_zamowienia sz on z.status_zamowienia=sz.id_statusu_zamowienia 
+where sz.nazwa_statusu_zamowienia != 'zrealizowane';
+10.Select * from adres_klienta where kod not LIKE '__-___';
