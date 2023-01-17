@@ -8,7 +8,7 @@
 join __firma_zti.kategoria k ON k.id_kategori=t.kategoria 
 join __firma_zti.stan_magazynowy sm ON sm.towar=t.id_towaru
 join __firma_zti.jednostka_miary jm on sm.jm=jm.id_jednostki);
-8) select * from pozycja_zamowienia pz inner join (select * from zamowienie order by data_zamowienia asc limit 5) as z on z.id_zamowienia=pz.zamowienie;
+8) select * from pozycja_zamowienia pz inner join (select * from zamowienie order by data_zamowienia asc limit 5 as z on z.id_zamowienia=pz.zamowienie;
 9) select z.* from zamowienie z join status_zamowienia sz on z.status_zamowienia=sz.id_statusu_zamowienia 
 where sz.nazwa_statusu_zamowienia != 'zrealizowane';
-10.Select * from adres_klienta where kod not LIKE '__-___';
+10) select * from adres_klienta where kod not LIKE '__-___';
