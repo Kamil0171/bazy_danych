@@ -1,0 +1,10 @@
+1) select imie,nazwisko, data_urodzenia from pracownik;
+2) select imie,nazwisko, (2023-year(data_urodzenia)) as wiek from pracownik;
+3) select d.nazwa,count(*) from dzial d join pracownik p on d.id_dzialu=p.dzial group by dzial;
+4) select nazwa_kategori, count(id_towaru) from kategoria k join towar t on t.kategoria=k.id_kategori group by nazwa_kategori;
+5) select k.nazwa_kategori, group_concat(t.nazwa_towaru) from kategoria k join towar t on t.kategoria=k.id_kategori group by k.id_kategori;
+6) select round(avg(pensja), 2) as sr_pensja from pracownik;
+7) select round(avg(pensja), 2) as sr_pensja from pracownik where year(now())-year(data_zatrudnienia)>=5;
+8) select t.nazwa_towaru, count(pz.towar) as ilosc from pozycja_zamowienia pz join towar t on pz.towar=t.id_towaru group by towar order by ilosc desc limit 10;
+9) select z.numer_zamowienia, sum(pz.ilosc*pz.cena) as wartosc from pozycja_zamowienia pz join zamowienie z on pz.zamowienie=z.id_zamowienia where year(z.data_zamowienia)=2017 and month(z.data_zamowienia) between 1 and 3 group by zamowienie;
+10) select p.imie, p.nazwisko, sum(pz.ilosc*pz.cena) as wartosc from pracownik p join zamowienie z on p.id_pracownika=z.pracownik_id_pracownika join pozycja_zamowienia pz on z.id_zamowienia=pz.zamowienie group by p.id_pracownika order by wartosc desc;
